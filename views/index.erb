@@ -1,0 +1,26 @@
+<HTML>
+<Head>
+  <Title>Cycle Time Data for <%= @board_id %></Title>
+  <link rel="stylesheet" type="text/css" href="/main.css">
+</Head>
+
+<body>
+    <h3>Cycle time data for <%= @board_id %> from instance <%= @instance_number %></h3>
+
+    <table>
+      <tr>
+        <td>Card id</td>
+        <td>Cycle time</td>
+        <td>Estimate</td>
+      </tr>
+
+      <% @data.each do |times| %>
+        <tr>
+          <td><%=times[:card]%></td>
+          <td><%=times[:cycle_time]%></td>
+          <td><%=times[:estimate]%></td>
+        </tr>
+      <% end %>
+    </table>
+</body>
+</HTML>
