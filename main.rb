@@ -17,15 +17,6 @@ configure do
   set :orchestrate_api_key, orchestrate_api_key
   set :orchestrate_collection, orchestrate_collection
   set :orchestrate_endpoint, orchestrate_endpoint
-
-  #config_file = YAML.load_file './config.yml'
-  #api_key = ENV['WUFOO_API_KEY']
-
-  #wufoo_api = WuParty.new(config_file['config_data'][0]['wufoo_account_id'], api_key)
-  #set :wufoo_api, wufoo_api
-
-  #set :results_dir, config_file['config_data'][0]['results_dir']
-  #set :scoring_files, config_file['config_data'][0]['scoring_files']
 end
 
 require_relative './routes/init.rb'
