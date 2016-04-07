@@ -1,0 +1,6 @@
+---
+applications:
+  - name: cycletime_ui
+    memory: 64M
+    services:
+      - orchestrate_demo_db
