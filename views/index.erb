@@ -2,21 +2,52 @@
 <Head>
   <Title>Cycle Time Data for <%= @board_id %></Title>
   <link rel="stylesheet" type="text/css" href="/main.css">
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/lodash/4.11.0/lodash.min.js">
+
+  </script>
+   <!--<script src="/local_scripts.js"></script>-->
 </Head>
 
 <body>
     <h3>Cycle time data for <%= @board_id %> from instance <%= @instance_number %></h3>
 
+    <div id="cycletime_data" style="width:1200px;height:500px;"></div>
+    <script>
+      var data = <%= @data.to_json %>;
+      var x = _.range(data.length);
+      var y = _.map(data, function(d) {
+        return d["cycle_time"];
+      });
+      var pointText = _.map(data, function(d) {
+        var date = new Date(d['end_time']);
+        var date_string = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
+        return d["name"] + ", Finished at " + date_string;
+      });
+
+      cycletime_data_element = document.getElementById('cycletime_data');
+      Plotly.plot( cycletime_data_element, [{
+       x: x,
+       y: y,
+       mode: 'markers',
+       type: 'scatter',
+        text: pointText,
+      hoverinfo: 'text'}], {
+  	  margin: { t: 0 } } );
+    </script>
+
     <table>
       <tr>
-        <td>Card id</td>
+        <td><div style="width:400px;">Card title</div></td>
+        <td>End Date</td>
         <td>Cycle time</td>
         <td>Estimate</td>
       </tr>
 
       <% @data.each do |times| %>
         <tr>
-          <td><%=times[:card]%></td>
+          <td><div style="width:400px;"><%=times[:name]%></div></td>
+          <td><%=times[:end_time]%></td>
           <td><%=times[:cycle_time]%></td>
           <td><%=times[:estimate]%></td>
         </tr>
