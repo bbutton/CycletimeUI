@@ -36,21 +36,28 @@
     </script>
 
     <table>
-      <tr>
-        <td><div style="width:400px;">Card title</div></td>
-        <td>End Date</td>
-        <td>Cycle time</td>
-        <td>Estimate</td>
-      </tr>
+      <colgroup>
+        <col class="name_column">
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+          <tr>
+            <td>Card title</td>
+            <td>End Date</td>
+            <td>Cycle time</td>
+            <td>Estimate</td>
+          </tr>
 
-      <% @data.each do |times| %>
-        <tr>
-          <td><div style="width:400px;"><%=times[:name]%></div></td>
-          <td><%=times[:end_time]%></td>
-          <td><%=times[:cycle_time]%></td>
-          <td><%=times[:estimate]%></td>
-        </tr>
-      <% end %>
+          <% @data.each do |times| %>
+            <tr>
+              <td><%=times[:name]%></td>
+              <td><%=times[:end_time]%></td>
+              <td><%=times[:cycle_time]%></td>
+              <td><%=times[:estimate]%></td>
+            </tr>
+          <% end %>
+      </tbody>
     </table>
 </body>
 </HTML>

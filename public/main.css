@@ -6,4 +6,7 @@ table, th, td {
     border: 1px solid black;
 }
 
+.name_column {
+    width:400px;
+}
 
