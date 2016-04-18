@@ -10,7 +10,9 @@ end
 get '/cycletimes/:board_id' do |id|
   cycletimes = CycletimeRepository.new settings.orchestrate_api_key, settings.orchestrate_collection, settings.orchestrate_endpoint
 
-  @data = cycletimes.fetch(id)
+  d = cycletimes.fetch(id)
+  @board_name = d[:board_name]
+  @data = d[:cycle_times]
   @board_id = id
   @instance_number = ENV["CF_INSTANCE_INDEX"] || -1
 
