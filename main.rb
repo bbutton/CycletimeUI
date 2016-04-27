@@ -26,6 +26,10 @@ require_relative 'lib/cycletime_repository.rb'
 require 'sinatra/base'
 
 class CycleTimeUi < Sinatra::Base
+  use Rack::Auth::Basic, "Restricted Area" do |username, password|
+    username == 'centurylink' and password == 'CloudCity2015!'
+  end
+
   configure do
     orchestrate_api_key = ENV["ORCHESTRATE_API_KEY"]
     orchestrate_collection = ENV["ORCHESTRATE_COLLECTION"]
