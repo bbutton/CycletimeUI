@@ -1,4 +1,4 @@
 require 'sinatra'
 require './main'
 
-run Sinatra::Application
+run CycleTimeUi
