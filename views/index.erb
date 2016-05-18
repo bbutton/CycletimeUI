@@ -9,8 +9,12 @@
 </Head>
 
 <body>
-    <h3>Cycle time data for <%= @board_name %> from instance <%= @instance_number %></h3>
-
+    <h3>Cycle time data for <%= @board_name %> from instance <%= @instance_number %>, <%= @update_status %></h3>
+    <div id="update">
+      <form id="update_form", method="POST", action="/update/<%= @board_id %>">
+        <input type="submit" value="Update Stats"/>
+      </form>
+    </div>
     <div id="cycletime_data" style="width:1200px;height:500px;"></div>
     <script>
       var data = <%= @data.to_json %>;

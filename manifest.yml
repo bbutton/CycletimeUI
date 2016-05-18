@@ -4,3 +4,4 @@ applications:
     memory: 64M
     services:
       - orchestrate_demo_db
+      - aatc_demo_db
